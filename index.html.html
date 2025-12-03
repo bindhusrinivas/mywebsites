@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Animated Resume Website</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: url('https://images.unsplash.com/photo-1526401485004-2fa806b5d2c3?auto=format&fit=crop&w=1650&q=80') no-repeat center center/cover;
+        color: white;
+        transition: 0.4s;
+    }
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(4px);
+        z-index: -1;
+    }
+    header {
+        text-align: center;
+        padding: 20px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 10px #00eaff;
+        animation: fadeDown 1.2s ease-in-out;
+        position: relative;
+    }
+    #toggle {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        padding: 7px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: white;
+        color: black;
+        font-weight: bold;
+    }
+    nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 20px;
+        transition: 0.3s;
+    }
+    nav a:hover, nav a.active {
+        color: yellow;
+        text-shadow: 0 0 10px yellow;
+    }
+    section {
+        display: none;
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 25px;
+        background: rgba(0,0,0,0.55);
+        border-radius: 15px;
+        animation: fadeIn 1s ease;
+    }
+    .show { display: block; }
+    #home h2 { font-size: 35px; text-align: center; animation: glow 2s infinite alternate; }
+    .profile {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        display: block;
+        margin: 20px auto;
+        border: 4px solid white;
+        box-shadow: 0 0 20px cyan;
+        animation: float 3s infinite ease-in-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes glow { from { text-shadow: 0 0 10px cyan; } to { text-shadow: 0 0 25px blue; } }
+    @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        margin: 10px;
+        border-radius: 10px;
+        background: cyan;
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .btn:hover { transform: scale(1.1); background: yellow; }
+    footer {
+        text-align: center;
+        color: white;
+        padding: 12px;
+        margin-top: 20px;
+        background: rgba(0,0,0,0.6);
+    }
+    .dark {
+        background: #111 !important;
+        color: #eee;
+    }
+    .dark section { background: rgba(20,20,20,0.8); }
+    .dark footer { background: rgba(255,255,255,0.1); }
+</style>
+</head>
+
+<body>
+<div class="overlay"></div>
+
+<header>
+    Welcome to My Webpage
+    <button id="toggle">🌙 Dark Mode</button>
+</header>
+
+<nav>
+    <a href="#" class="active" onclick="showPage('home')" id="homeTab">Home</a>
+    <a href="#" onclick="showPage('resume')" id="resumeTab">Resume</a>
+    <a href="#" onclick="showPage('biodata')" id="biodataTab">Bio-Data</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="show">
+    <img src="profile.jpg" class="profile" alt="Profile Photo">
+    <h2>Hi, Welcome to my Webpage!</h2>
+    <p style="text-align:center;font-size:18px;">
+        Explore my Resume & Bio-data!
+    </p>
+    <div style="text-align:center;">
+        <a class="btn" onclick="showPage('resume')">View Resume</a>
+        <a class="btn" onclick="showPage('biodata')">View Bio-Data</a>
+    </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+    <h2>My Resume</h2>
+
+    <h3>Career Objective</h3>
+    <p>To secure a responsible position in a reputable organization to expand my knowledge, skills, and contribute to innovative projects.</p>
+
+    <h3>Education</h3>
+    <ul>
+        <li>B.E in Computer Science & Engineering – JIT College – 2025</li>
+        <li>Diploma – SVKP – 2023</li>
+        <li>SSLC – Blossom School – 2019</li>
+    </ul>
+
+    <h3>Skills</h3>
+    <ul>
+        <li>HTML, CSS, JavaScript, jQuery</li>
+        <li>Python, C, C++</li>
+        <li>UI/UX Design, Adobe Photoshop</li>
+        <li>Database Management (MySQL, MongoDB)</li>
+        <li>Machine Learning Basics</li>
+    </ul>
+
+    <h3>Projects</h3>
+    <ul>
+        <li><b>Travel Booking App:</b> UI/UX design and frontend development.</li>
+        <li><b>Face Detection System:</b> Real-time face recognition using Python & OpenCV.</li>
+        <li><b>Hand Gesture Recognition:</b> AI-based project using OpenCV & Mediapipe.</li>
+        <li><b>Portfolio Website:</b> Designed using HTML, CSS, JavaScript, and animations.</li>
+    </ul>
+
+    <h3>Achievements</h3>
+    <ul>
+       <li>Certified in Web Development & UI/UX Design</li>
+    </ul>
+</section>
+
+<!-- BIODATA -->
+<section id="biodata">
+    <h2>Bio-Data</h2>
+    <table style="width:100%;color:white;">
+        <tr><th>Name:</th><td>Bindu S</td></tr>
+        <tr><th>Father’s Name:</th><td>Srinivas K</td></tr>
+        <tr><th>Mother’s Name:</th><td>Uma S</td></tr>
+        <tr><th>Date of Birth:</th><td>24-05-2003</td></tr>
+        <tr><th>Gender:</th><td>Female</td></tr>
+        <tr><th>Nationality:</th><td>Indian</td></tr>
+        <tr><th>Languages Known:</th><td>Kannada,Tamil,English</td></tr>
+        <tr><th>Address:</th><td>123, Street Name, City, State, PIN</td></tr>
+        <tr><th>Email:</th><td>bindhusrinivas26@gmail.com</td></tr>
+        <tr><th>Phone:</th><td>9876543210</td></tr>
+    </table>
+
+    <h3>Interests</h3>
+    <ul>
+        <li>Coding & Development</li>
+        <li>Photography & Graphic Design</li>
+        <li>Travel & Exploration</li>
+        <li>Reading Technical Blogs</li>
+    </ul>
+</section>
+
+<footer>
+    © 2025 BinduSrinivas
+</footer>
+
+<script>
+function showPage(page) {
+    document.getElementById("home").classList.remove("show");
+    document.getElementById("resume").classList.remove("show");
+    document.getElementById("biodata").classList.remove("show");
+    document.getElementById(page).classList.add("show");
+
+    document.getElementById("homeTab").classList.remove("active");
+    document.getElementById("resumeTab").classList.remove("active");
+    document.getElementById("biodataTab").classList.remove("active");
+    document.getElementById(page + "Tab").classList.add("active");
+}
+
+document.getElementById("toggle").onclick = function () {
+    document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) {
+        this.textContent = "☀ Light Mode";
+    } else {
+        this.textContent = "🌙 Dark Mode";
+    }
+}
+</script>
+
+</body>
+</html>
